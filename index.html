@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="行った店">
+  <meta name="description" content="訪問した店を記録するアプリ">
+  <title>行った店メモ</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+  <span class="icon">🍽️</span>
+  <h1>行った店メモ</h1>
+  <span class="offline-badge">オフライン</span>
+</header>
+
+<main>
+  <div id="queue-info" class="queue-info"></div>
+
+  <form id="form">
+    <div class="card">
+      <div class="field">
+        <label for="shopName">店名 *</label>
+        <input type="text" id="shopName" placeholder="例：一蘭 渋谷店" autocomplete="off" required>
+      </div>
+
+      <div class="field">
+        <label for="visitDate">訪問日</label>
+        <input type="date" id="visitDate">
+      </div>
+
+      <div class="field">
+        <label>評価</label>
+        <div class="star-rating" role="group" aria-label="評価">
+          <span role="button" aria-label="1点" tabindex="0">☆</span>
+          <span role="button" aria-label="2点" tabindex="0">☆</span>
+          <span role="button" aria-label="3点" tabindex="0">☆</span>
+          <span role="button" aria-label="4点" tabindex="0">☆</span>
+          <span role="button" aria-label="5点" tabindex="0">☆</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="category">カテゴリ</label>
+        <select id="category">
+          <option value="">選択してください</option>
+          <option value="ラーメン・麺類">🍜 ラーメン・麺類</option>
+          <option value="寿司・和食">🍣 寿司・和食</option>
+          <option value="焼肉・BBQ">🥩 焼肉・BBQ</option>
+          <option value="カフェ・喫茶店">☕ カフェ・喫茶店</option>
+          <option value="居酒屋・バー">🍺 居酒屋・バー</option>
+          <option value="洋食・イタリアン">🍝 洋食・イタリアン</option>
+          <option value="中華">🥟 中華</option>
+          <option value="スイーツ・デザート">🍰 スイーツ・デザート</option>
+          <option value="ファストフード">🍔 ファストフード</option>
+          <option value="その他">🏪 その他</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="field">
+        <label for="address">住所・場所</label>
+        <div class="gps-row">
+          <input type="text" id="address" placeholder="住所（GPSボタンで自動入力）" autocomplete="off">
+          <button type="button" id="btn-gps" class="btn-gps" title="現在地を取得">📍</button>
+        </div>
+        <div id="coords-display" class="coords-display"></div>
+      </div>
+
+      <div class="field">
+        <label for="memo">メモ</label>
+        <textarea id="memo" placeholder="おすすめメニュー、感想、次回試したいことなど..."></textarea>
+      </div>
+    </div>
+
+    <button type="submit" id="btn-submit" class="btn-submit">
+      📝 記録する
+    </button>
+  </form>
+</main>
+
+<div id="toast" class="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>
