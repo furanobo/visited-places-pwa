@@ -94,7 +94,12 @@ async function getGPS() {
       setTimeout(() => { btn.textContent = '📍'; }, 2000);
     },
     (err) => {
-      showToast('位置情報の取得に失敗しました', 'error');
+      const msgs = {
+        1: '位置情報の許可が必要です（設定からサイトの権限を確認してください）',
+        2: '位置情報を取得できませんでした',
+        3: '位置情報の取得がタイムアウトしました',
+      };
+      showToast(msgs[err.code] || '位置情報の取得に失敗しました', 'error');
       btn.classList.remove('loading');
       btn.textContent = '📍';
     },
@@ -113,10 +118,12 @@ async function handleSubmit(e) {
     return;
   }
 
+  const priceVal = document.getElementById('price').value;
   const payload = {
     shopName,
     visitDate: document.getElementById('visitDate').value,
     rating: currentRating,
+    price: priceVal ? parseInt(priceVal) : null,
     category: document.getElementById('category').value,
     address: document.getElementById('address').value.trim(),
     memo: document.getElementById('memo').value.trim(),
@@ -161,6 +168,7 @@ async function sendPayload(payload) {
 
 function resetForm() {
   document.getElementById('shopName').value = '';
+  document.getElementById('price').value = '';
   document.getElementById('category').value = '';
   document.getElementById('address').value = '';
   document.getElementById('memo').value = '';

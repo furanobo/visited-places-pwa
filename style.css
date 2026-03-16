@@ -215,6 +215,50 @@ textarea {
 /* Category icons */
 .category-icon { margin-right: 4px; }
 
+/* Price */
+.price-row {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: #fafafa;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.price-row:focus-within {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.price-prefix {
+  padding: 12px 10px 12px 14px;
+  font-size: 16px;
+  color: var(--text-light);
+  font-weight: 600;
+  user-select: none;
+}
+
+.price-row input[type="number"] {
+  border: none;
+  background: transparent;
+  padding: 12px 14px 12px 4px;
+  flex: 1;
+  -moz-appearance: textfield;
+}
+
+.price-row input[type="number"]:focus {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.price-row input[type="number"]::-webkit-outer-spin-button,
+.price-row input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Coords display */
 .coords-display {
   font-size: 12px;
