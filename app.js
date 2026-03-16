@@ -1,4 +1,4 @@
-const WEBHOOK_URL = 'http://192.168.100.100:5678/webhook/visited-place';
+const WEBHOOK_URL = 'http://192.168.100.100:5678/webhook/hmlrnCh2eQpRD9cs/webhook/visited-place';
 const QUEUE_KEY = 'visited_places_queue';
 
 let currentRating = 3;
